@@ -1,0 +1,277 @@
+﻿.TendersListWrapper th, .TendersListWrapper td {
+    font-size: 0.9rem;
+}
+
+.TendersListWrapper thead th {
+    background: #091540;
+    color: #fff;
+    font-family: 'Roboto Condensed';
+    letter-spacing: 0.8px;
+    padding: 10px;
+    position: relative;
+}
+
+.TendersListWrapper {
+    margin-top: 25px;
+}
+
+    .TendersListWrapper th:first-child, .TendersListWrapper td:first-child {
+        display: none;
+    }
+
+    .TendersListWrapper tbody tr.clicked td {
+        background: rgba(0,0,0,0.2);
+    }
+
+    .TendersListWrapper table {
+        border: 1px solid #ddd;
+    }
+
+    .TendersListWrapper tbody td {
+        cursor: pointer;
+    }
+
+.tenderFilterByTypes .label {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding-left: 25px;
+    line-height: 1.3em;
+}
+
+.tenderFilterByTypes ul {
+    display: table;
+    table-layout: fixed;
+}
+
+    .tenderFilterByTypes ul li {
+        display: table-cell;
+    }
+
+.tenderFilterByTypes input[type="radio"] {
+    margin-left: 0;
+}
+
+.tenderFilterByTypes {
+    margin-top: 12px;
+}
+
+.actionPanel {
+    padding-top: 25px;
+}
+
+    .actionPanel ul {
+        display: table;
+    }
+
+        .actionPanel ul li {
+            display: table-cell;
+            padding-right: 10px;
+        }
+
+.pagination-counter ul {
+    display: table;
+}
+
+    .pagination-counter ul li {
+        display: table-cell;
+        margin-right: 14px;
+    }
+
+select.pagination-count {
+    float: right;
+    margin-right: 10px;
+    padding: 6px;
+}
+
+.pagination-counter {
+    float: right;
+}
+
+div#Pagination {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.pagination-counter a {
+    margin-right: 10px;
+}
+
+#btnNext {
+    margin-right: 0;
+}
+
+.error-msg {
+    display: inline-block;
+    float: left;
+    font-size: 0.9rem;
+    color: red;
+}
+
+.serach-wrapper label {
+    color: #000;
+    padding-bottom: 10px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+a#btnSearch {
+    background: #06a4bd;
+    display: inline-block;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    position: absolute;
+    right: 40px;
+    bottom: 5px;
+}
+
+.serach-wrapper > div {
+    display: table-cell;
+}
+
+.serach-wrapper {
+    position: relative;
+    padding-right: 80px;
+    padding-top: 20px;
+    display: table;
+    width: 100% !important;
+    table-layout: fixed;
+}
+
+    .serach-wrapper select {
+        border: 1px solid #d5d5d5;
+        padding: 7px;
+    }
+
+    .serach-wrapper .title {
+        float: left;
+        font-size: 0.9rem;
+        font-weight: 900;
+        padding-top: 35px;
+    }
+
+.Search-controls {
+    padding-left: 55px;
+}
+
+input#txtSearchbox {
+    padding: 7px;
+    margin-left: 5px;
+}
+
+ul.action-controls-wrapper {
+    display: table;
+    /* width: 50%; */
+    float: left;
+    padding-top: 10px;
+}
+
+    ul.action-controls-wrapper li {
+        display: table-cell;
+        padding-right: 10px;
+    }
+
+.footer-operations {
+    float: left;
+    width: 100%;
+}
+
+.tenderFilterByTypes li > .radio span.radio {
+    display: inline-block;
+    position: absolute;
+    background: #091540;
+    padding: 6.6px;
+    background: #fff;
+    border-radius: 100%;
+    top: 0;
+    margin: 0;
+    border: 3px solid;
+    transition: 0.2s all ease;
+}
+
+.tenderFilterByTypes li > span.radio {
+    position: relative;
+}
+
+.tenderFilterByTypes input[type='radio'] {
+    padding: 12px;
+    display: inline-block;
+    z-index: 1;
+    width: 1.4em;
+    height: 1.4em;
+    top: -4px;
+    left: 0px;
+    opacity: 0;
+    transition: 0.3s all ease;
+    cursor: pointer;
+}
+
+.tenderFilterByTypes li > .radio input[type='radio'] + span.radio:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    background: #204d74;
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+    left: 2px;
+    transition: 0.5s all ease;
+    opacity: 0;
+}
+
+.tenderFilterByTypes li > .radio input[type='radio']:checked + span.radio:after {
+    opacity: 1;
+}
+
+.TendersListWrapper thead th span {
+    padding: 3px;
+    top: 7px;
+}
+
+input.chbxSelection {
+    width: 1.5em;
+    height: 1.5em;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#tblTenders .glyphicon.glyphicon-ok {
+    border: 2px solid;
+    position: absolute;
+    top: -6px;
+    left: 0;
+    padding: 1px;
+}
+
+span.chkboxwrapper {
+    position: relative;
+}
+
+.chkboxwrapper span.glyphicon.glyphicon-ok:before {
+    opacity: 0;
+    transition: 0.3s all ease;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+input.chbxSelection:checked + .glyphicon.glyphicon-ok:before {
+    opacity: 1;
+}
+
+input.chbxSelection:checked + .glyphicon.glyphicon-ok {
+    background: #091540;
+}
+
+#btnReset {
+    background: #06a4bd;
+    display: inline-block;
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}

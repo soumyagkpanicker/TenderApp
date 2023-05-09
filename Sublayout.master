@@ -1,0 +1,1126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Sublayout.master.cs" Inherits="Sublayout" %>
+
+<!DOCTYPE html>
+
+<html>
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/img/favicon-sulzer.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="Content/css/bootstrap-datepicker3.min.css" />
+    <title>SULZER – OHX</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/css/main.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        var $jq1 = jQuery.noConflict();
+    </script>
+    <script src="Scripts/jquery.scrollbar.js"></script>
+    <script src="Scripts/GlobalVariables.js" type="text/javascript"></script>
+    <!--- For the select option -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="Scripts/bootstrap-datepicker.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        #designpressurebar, #designtemperaturec {
+            width: 20%;
+            float: left;
+            margin-right: 10px;
+        }
+
+        #unitsOfPressure, #unitsOftemperature {
+            float: left;
+            width: 32%;
+        }
+
+        span.red {
+            color: red;
+        }
+
+        .footnote {
+            margin-top: 30px;
+        }
+
+        .overlay.agentDetailsPopup .customPopup {
+            margin-top: -300px;
+            width: 51%;
+            margin-left: -300px;
+        }
+
+        .overlay.agentDetailsPopup .form-group input {
+            height: 35px;
+            float: left;
+            max-width: 270px;
+        }
+
+        .overlay.agentDetailsPopup .form-group label {
+            float: left;
+            width: 200px;
+            text-align: left;
+        }
+
+        .content-of-popup .form-group {
+            display: inline-block;
+            width: calc(100% - 100px);
+            margin-bottom: 10px;
+        }
+
+        .overlay.agentDetailsPopup h3 {
+            padding-bottom: 30px;
+        }
+
+        .customPopup.active {
+            z-index: 99999;
+            transform: scale(1,1);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            z-index: 99999;
+        }
+
+        .btnClosePopup {
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            background: #000;
+        }
+
+            .btnClosePopup img {
+                max-width: 100%;
+            }
+
+        .overlay {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            z-index: 10000;
+            background: rgba(0,0,0,0.2);
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: 0.7s all ease;
+            z-index: -1;
+        }
+
+
+        .customPopup {
+            position: fixed;
+            background: #fff;
+            padding: 60px 30px 50px 30px;
+            width: 65%;
+            top: 50%;
+            z-index: 999;
+            font-size: 0.9rem;
+            line-height: 2.3em;
+            text-align: center;
+            box-shadow: 2px 1px 11.6px rgba(0,0,0,0.3);
+            left: 50%;
+            transition: 0.8s all ease;
+            z-index: -1;
+            transform: scale(0);
+            margin-top: -138px;
+            margin-left: -432px;
+        }
+
+        div#allocateToanotherGroup1 {
+            position: relative;
+            top: auto;
+            margin: auto;
+        }
+
+
+        .customPopup h3 {
+            font-size: 1.5rem;
+            padding-bottom: 15px;
+        }
+
+        .customPopup .content-of-popup p {
+            font-size: 1.1em;
+            line-height: 2em;
+            padding-bottom: 25px;
+        }
+
+
+        .ulClass {
+            display: block;
+            background: white;
+            list-style: none;
+            margin: 0;
+            padding: 12px 10px;
+            height: 21px;
+        }
+
+        .liClass {
+            float: left;
+            font: 13px helvetica;
+            font-weight: bold;
+            margin: 3px 0;
+        }
+
+        #noti_Container {
+            position: relative;
+        }
+
+        /* A CIRCLE LIKE BUTTON IN THE TOP MENU. */
+        #noti_Button {
+            width: 36px;
+            height: 22px;
+            line-height: 22px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            background: #FFF;
+            margin: -3px 10px 0 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* THE POPULAR RED NOTIFICATIONS COUNTER. */
+        #noti_Counter {
+            display: block;
+            position: absolute;
+            background: #E1141E;
+            color: #FFF;
+            font-size: 12px;
+            font-weight: normal;
+            padding: 1px 3px;
+            margin: -8px 0 0px 45px;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            z-index: 1;
+        }
+
+        /* THE NOTIFICAIONS WINDOW. THIS REMAINS HIDDEN WHEN THE PAGE LOADS. */
+        #notifications {
+            display: none;
+            width: 430px;
+            position: absolute;
+            top: 30px;
+            left: -340px;
+            background: #FFF;
+            border: solid 1px rgba(100, 100, 100, .20);
+            -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .20);
+            z-index: 0;
+            max-height: 300px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+            /* AN ARROW LIKE STRUCTURE JUST OVER THE NOTIFICATIONS WINDOW */
+            #notifications:before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                color: transparent;
+                border: 10px solid #CCC;
+                border-color: transparent transparent #337ab7;
+                margin-top: -20px;
+                margin-left: 387px;
+            }
+
+        .h3Class {
+            display: block;
+            color: #333;
+            background: #337ab7;
+            /*font-weight: bold;*/
+            /*font-size: 13px;*/
+            color: white;
+            padding: 15px;
+            margin: 0;
+            border-bottom: solid 1px rgba(100, 100, 100, .30);
+        }
+
+        .seeAll {
+            background: #F6F7F8;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-top: solid 1px rgba(100, 100, 100, .30);
+            text-align: center;
+        }
+
+            .seeAll a {
+                color: #3b5998;
+            }
+
+                .seeAll a:hover {
+                    background: #F6F7F8;
+                    color: #3b5998;
+                    text-decoration: underline;
+                }
+
+        /*input[type=text], textarea {
+            width: 100%;
+            padding: 6px 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        td {
+            text-align: left;
+            padding: 7px 9px !important;
+            font-size: 14px;
+        }*/
+
+
+        /*------------- SCROLLBAR CSS --------------*/
+        /*************** SCROLLBAR BASE CSS ***************/
+
+        .scroll-wrapper {
+            overflow: hidden !important;
+            padding: 0 !important;
+            position: relative;
+        }
+
+            .scroll-wrapper > .scroll-content {
+                border: none !important;
+                box-sizing: content-box !important;
+                height: auto;
+                left: 0;
+                margin: 0;
+                max-height: none;
+                max-width: none !important;
+                overflow: scroll !important;
+                padding: 0;
+                position: relative !important;
+                top: 0;
+                width: auto !important;
+            }
+
+                .scroll-wrapper > .scroll-content::-webkit-scrollbar {
+                    height: 0;
+                    width: 0;
+                }
+
+        .scroll-element {
+            display: none;
+        }
+
+            .scroll-element, .scroll-element div {
+                box-sizing: content-box;
+            }
+
+                .scroll-element.scroll-x.scroll-scrollx_visible,
+                .scroll-element.scroll-y.scroll-scrolly_visible {
+                    display: block;
+                }
+
+                .scroll-element .scroll-bar,
+                .scroll-element .scroll-arrow {
+                    cursor: default;
+                }
+
+        .scroll-textarea {
+            border: 1px solid #cccccc;
+            border-top-color: #999999;
+        }
+
+            .scroll-textarea > .scroll-content {
+                overflow: hidden !important;
+            }
+
+                .scroll-textarea > .scroll-content > textarea {
+                    border: none !important;
+                    box-sizing: border-box;
+                    height: 100% !important;
+                    margin: 0;
+                    max-height: none !important;
+                    max-width: none !important;
+                    overflow: scroll !important;
+                    outline: none;
+                    padding: 2px;
+                    position: relative !important;
+                    top: 0;
+                    width: 100% !important;
+                }
+
+                    .scroll-textarea > .scroll-content > textarea::-webkit-scrollbar {
+                        height: 0;
+                        width: 0;
+                    }
+
+
+
+
+        /*************** SCROLLBAR RAIL ***************/
+
+        .scrollbar-rail > .scroll-element,
+        .scrollbar-rail > .scroll-element div {
+            border: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .scrollbar-rail > .scroll-element {
+            background-color: #ffffff;
+        }
+
+            .scrollbar-rail > .scroll-element div {
+                display: block;
+                height: 100%;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            .scrollbar-rail > .scroll-element .scroll-element_size {
+                background-color: #999;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+            .scrollbar-rail > .scroll-element .scroll-element_outer:hover .scroll-element_size {
+                background-color: #666;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+
+            .scrollbar-rail > .scroll-element.scroll-x {
+                bottom: 0;
+                height: 12px;
+                left: 0;
+                min-width: 100%;
+                padding: 3px 0 2px;
+                width: 100%;
+                display: none;
+            }
+
+            .scrollbar-rail > .scroll-element.scroll-y {
+                height: 100%;
+                min-height: 100%;
+                padding: 0 2px 0 3px;
+                right: 0;
+                top: 0;
+                width: 12px;
+            }
+
+            .scrollbar-rail > .scroll-element .scroll-bar {
+                background-color: #d5d5d5;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.7);
+            }
+
+            .scrollbar-rail > .scroll-element .scroll-element_outer:hover .scroll-bar {
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            }
+
+        /* scrollbar height/width & offset from container borders */
+
+        .scrollbar-rail > .scroll-content.scroll-scrolly_visible {
+            left: -17px;
+            margin-left: 17px;
+        }
+
+        .scrollbar-rail > .scroll-content.scroll-scrollx_visible {
+            margin-top: 17px;
+            top: -17px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-x .scroll-bar {
+            height: 10px;
+            min-width: 10px;
+            top: 1px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-y .scroll-bar {
+            left: 1px;
+            min-height: 10px;
+            width: 10px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-x .scroll-element_outer {
+            height: 15px;
+            left: 5px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-x .scroll-element_size {
+            height: 2px;
+            left: -10px;
+            top: 5px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-y .scroll-element_outer {
+            top: 5px;
+            width: 15px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-y .scroll-element_size {
+            left: 5px;
+            top: -10px;
+            width: 2px;
+        }
+
+        /* update scrollbar offset if both scrolls are visible */
+
+        .scrollbar-rail > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size {
+            left: -25px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size {
+            top: -25px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track {
+            left: -25px;
+        }
+
+        .scrollbar-rail > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track {
+            top: -25px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <div class="logo-wrapper dashboard">
+            <img src="assets/brand/sulzer.png" alt="Sulzer" />
+        </div>
+        <div class="logo-wrapper">
+            <a href="DashBoard.aspx">
+                <img src="assets/brand/sulzer.png" alt="Sulzer" /></a>
+        </div>
+        <div class="right-header-links">
+            <ul class="ulClass">
+                <%--<li><a id="noti_Button">Messages</a></li>--%>
+                <li id="noti_Container" class=".liClass">
+                    <div id="noti_Counter"></div>
+                    <!--SHOW NOTIFICATIONS COUNT.-->
+
+                    <!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
+                    <div id="noti_Button" style="margin-right: 60px">All messages</div>
+
+                    <!--THE NOTIFICAIONS DROPDOWN BOX.-->
+                    <div id="notifications">
+                    </div>
+                </li>
+                <li><a href="javascript:;" class="btnLogout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="modal fade" id="myProfileModal" role="dialog" style="left: 10%">
+            <div class="modal-dialog" style="margin-top: 100px;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="width: 2%;">&times;</button>
+                        <h4 class="modal-title" style="font-size: 18px">Manage Profile</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 12px">
+                        <table cellspacing="0" cellpadding="0" style="border: 0px;">
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">Handled By:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <input type="text" maxlength="250" id="txtHandledBy" style="width: 96%; width: 100%; padding: 6px 12px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">Phone Direct:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <input type="text" maxlength="10" id="txtPhoneDirect" style="width: 96%; width: 100%; padding: 6px 12px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">Email Direct:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <input type="text" maxlength="100" id="txtEmailAddress" style="width: 96%; width: 100%; padding: 6px 12px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">Job Description:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <input type="text" maxlength="100" id="txtJobDescription" style="width: 96%; width: 100%; padding: 6px 12px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn modal-title" style="background-color: #5cb85c; color: white; width: 12%;" onclick="SaveProfleDetails();">Save</button>
+                        <button type="button" id="btnClose_Sub" class="btn btn-default" data-dismiss="modal" style="width: 12%;">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myLocationModal" role="dialog" style="left: 10%">
+            <div class="modal-dialog" style="margin-top: 100px;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="width: 2%;">&times;</button>
+                        <h4 class="modal-title" style="font-size: 18px">Switch Location</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 12px">
+                        <table cellspacing="0" cellpadding="0" style="border: 0px;">
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px; width: 26%">Select Location:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <select id="drpAssignedLegalEntityList" class="form-control" style="width: 95%; display: inline-block; margin-left: 2%;">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn modal-title" style="background-color: #5cb85c; color: white; width: 12%;" onclick="SwitchLocation();">Switch</button>
+                        <button type="button" id="btnCloseSwitchRole" class="btn btn-default" data-dismiss="modal" style="width: 12%;">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myRoleModal" role="dialog" style="left: 10%">
+            <div class="modal-dialog" style="margin-top: 100px;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="width: 2%;">&times;</button>
+                        <h4 class="modal-title" style="font-size: 18px">Switch User Role</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 12px">
+                        <table cellspacing="0" cellpadding="0" style="border: 0px;">
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px; width: 26%">Select User Role:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <select id="drpAssignedUserRole" class="form-control" style="width: 95%; display: inline-block; margin-left: 2%;">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn modal-title" style="background-color: #5cb85c; color: white; width: 12%;" onclick="SwitchUserRole();">Switch</button>
+                        <button type="button" id="Button1" class="btn btn-default" data-dismiss="modal" style="width: 12%;">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myLegalEntityModal" role="dialog" style="left: 10%">
+            <div class="modal-dialog" style="margin-top: 100px;">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style="width: 2%;">&times;</button>
+                        <h4 class="modal-title" style="font-size: 18px">Switch Legal Entity</h4>
+                    </div>
+                    <div class="modal-body" style="font-size: 12px">
+                        <table cellspacing="0" cellpadding="0" style="border: 0px;">
+                            <tr>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px; width: 26%">Select Legal Entity:
+                                </td>
+                                <td style="text-align: left; padding: 0px 9px !important; font-size: 14px;">
+                                    <select id="drpLegalEntityList" class="form-control" style="width: 95%; display: inline-block; margin-left: 2%;">
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn modal-title" style="background-color: #5cb85c; color: white; width: 12%;" onclick="SwitchLegalEntitye();">Switch</button>
+                        <button type="button" id="Button2" class="btn btn-default" data-dismiss="modal" style="width: 12%;">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="mainNavigation">
+            <nav>
+                <div class="user-information">
+                    <ul>
+                        <li style="padding: 0px;">
+                            <p id="paraUserName" style="font-size: 18px; padding: 0px;"><a class="username" style="cursor: pointer;" data-toggle="modal" data-target="#myProfileModal" onclick="ShowProfile();"></a></p>
+                            <ul>
+                                <li style="padding: 0px;">
+                                    <input type="image" src="Images/Role.png" style="display: inline-block; margin-right: 10px; margin-left: 10%; width: 25px; height: 25px; padding: 0px; border: 0px;" />
+                                    <%--<p class="role">Role</p>--%>
+                                    <p class="role" style="cursor: pointer;" data-toggle="modal" data-target="#myRoleModal" onclick="getAssignedUserRole();">
+                                        Role
+                                    </p>
+                                </li>
+                                <li style="padding: 0px;">
+                                    <input type="image" src="Images/Location.png" style="display: inline-block; margin-right: 10px; margin-left: 10%; width: 25px; height: 25px; padding: 0px; border: 0px;" />
+                                    <p class="location" style="cursor: pointer;" data-toggle="modal" data-target="#myLocationModal" onclick="getLegalEntityList();">
+                                        Location
+                                    </p>
+                                </li>
+                                <li style="padding: 0px;">
+                                    <input type="image" src="Images/Location.png" style="display: inline-block; margin-right: 10px; margin-left: 10%; width: 25px; height: 25px; padding: 0px; border: 0px;" />
+                                    <p class="legalentity" style="cursor: pointer; display: inline-block; vertical-align: middle;" data-toggle="modal" data-target="#myLegalEntityModal" onclick="getAssignedLegalEntity();">
+                                        Legal Entity
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="location-code hide"></p>
+                </div>
+                <ul>
+                    <li id="liDashboard" style="padding: 0px 12px 12px 12px; display: none;"><a href="Dashboard.aspx">
+                        <input type="image" src="Images/Dashboard.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -16px;">Dashboard</p>
+                    </a></li>
+                    <li id="liSearch" style="padding: 0px 12px 12px 12px; display: none;"><a href="Search.aspx">
+                        <input type="image" src="Images/Search.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -23px;">Search</p>
+                    </a></li>
+                    <%--<li><a href="Search.aspx"><span class="glyphicon glyphicon-search icon-nav"></span>Search</a></li>--%>
+                    <%--<li><a href="CustomerManagement.aspx"><span class="glyphicon glyphicon-user icon-nav"></span>Customer management</a></li>--%>
+                    <li id="liCustomerManagement" style="padding: 0px 12px 12px 12px; display: none;"><a href="CustomerManagement.aspx">
+                        <input type="image" src="Images/CustomerManagement.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -23px;">Customer Management</p>
+                    </a></li>
+                    <li id="liTenderManagement" style="padding: 0px 12px 12px 12px; display: none;">
+                        <input type="image" src="Images/Tender.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -23px;">Tender management</p>
+                        <ul style="padding: 0px;" id="ulTenderManagement">
+                            <li id="liTenderDetails"><a href="TenderManagement1.aspx" style="margin-left: 30px">Tender Details</a></li>
+                            <li id="liNewTender"><a href="NewTender.aspx" style="margin-left: 30px">New Tender</a></li>
+                            <li id="liTenderDocuments"><a href="TenderDocuments.aspx" style="margin-left: 30px">Tender Documents</a></li>
+                        </ul>
+                    </li>
+                    <li id="liAccessManager" style="padding: 0px 12px 12px 12px; display: none;"><a href="Configuration.aspx">
+                        <input type="image" src="Images/AccessManager.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -23px;">
+                            Access Manager</a></li>
+                    <li id="liMessageCentre" style="padding: 0px 12px 12px 12px; display: none;"><a href="MessageCenter.aspx">
+                        <input type="image" src="Images/MessageCentre.png" style="margin-right: 10px; width: 25px; height: 25px; padding: 0px; border: 0px;" /><p style="display: inline-block; vertical-align: middle; margin-top: -23px;">
+                            Message center</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="scrollbar-rail">
+            <div class="content-wrapper">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+
+    <script src="Scripts/core.js" type="text/javascript"></script>
+
+    <script>
+        var MessageCount = 0;
+        var PSNumber = "";
+        $jq1(document).ready(function () {
+            // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+            getMessages();
+            $jq1('#noti_Counter')
+                .css({ opacity: 0 })
+                .text(MessageCount)  // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+                .css({ top: '-10px' })
+                .animate({ top: '-2px', opacity: 1, left: '60px' }, 500);
+
+            $jq1('#noti_Button').click(function () {
+                // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
+                $jq1('#notifications').fadeToggle('fast', 'linear', function () {
+                    if ($jq1('#notifications').is(':hidden')) {
+                        $jq1('#noti_Button').css('background-color', '#FFF');
+                    }
+                    // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                    else $jq1('#noti_Button').css('background-color', '#FFF');
+                });
+                //$jq1('#noti_Counter').fadeOut('slow');     // HIDE THE COUNTER.
+                return false;
+            });
+
+
+        });
+
+        $jq1(document).click(function () {
+            $jq1('#notifications').hide();
+            // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
+            if ($jq1('#noti_Counter').is(':hidden')) {
+                // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                $jq1('#noti_Button').css('background-color', '#FFF');
+            }
+        });
+
+        $jq1('#notifications').click(function () {
+            return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+        });
+
+        function getMessages() {
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADMESSAGES',
+                cache: false,
+                async: false,
+                dataType: 'html',
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    var Messages = "<h3 class='h3Class'>Notifications</h3>";
+                    if (jsonData.length > 0) {
+                        Messages += "<hr style='margin-top: 0px;' />";
+                        for (i in jsonData.Table) {
+                            var dateOfCreation = new Date(jsonData.Table[i].Date);
+
+                            Messages += "<div style='cursor: pointer;padding-left: 15px;line-height: 1.3em;' onclick=RedirectMessage('" + jsonData.Table[i].TenderId + "')> ";
+
+                            if ($jq1.trim(jsonData.Table[i].Message.toString()).length > 65) {
+                                Messages += $jq1.trim(jsonData.Table[i].Message.toString()).substr(0, 65) + " . . . </div><hr style='margin-top: 20px !important;margin-bottom: 20px !important;border: 0 !important;border-top: 1px solid #eee !important'/>";
+                            }
+                            else {
+                                Messages += jsonData.Table[i].Message + "</div><hr style='margin-top: 20px !important;margin-bottom: 20px !important;border: 0 !important;border-top: 1px solid #eee !important'/>";
+                            }
+
+                            //Messages += "<div style='cursor: pointer;padding-left: 8px' onclick=RedirectMessage('" + jsonData.Table[i].TenderId + "')> " + dateOfCreation.getDate() + " " + FormatMonth(dateOfCreation.getMonth()) + " " + dateOfCreation.getFullYear() + " </div><br /><br />";
+                        }
+                    }
+                    else {
+                        Messages += "<div style='cursor: pointer;padding-left: 15px;line-height: 1.3em;padding-top:10px;padding-bottom:10px;'> No Messages Found </div>";
+                    }
+                    $jq1("#notifications").html(Messages);
+                    MessageCount = jsonData.Table1[0].MessageCount;
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + " " + errorThrown);
+                },
+            });
+        }
+
+        function RedirectMessage(TenderId) {
+            $jq1('#noti_Button').trigger("click");
+            getMessages();
+            window.open('EditTender.aspx?code=' + TenderId, '_blank');
+        }
+
+        function ShowProfile() {
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=GETUSERPROFILE',
+                cache: false,
+                async: false,
+                data: {
+                    role: getCookie("Role")
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $jq1("#txtHandledBy").val(data[0].UserName);
+                    $jq1("#txtEmailAddress").val(data[0].EmailAddress);
+
+                    if (data[0].PhoneNumber != "") {
+                        $jq1("#txtPhoneDirect").val(data[0].PhoneNumber);
+                    }
+
+                    if (data[0].Role == null) {
+                        $jq1("#txtJobDescription").val(getCookie("Role"));
+                    }
+                    else {
+                        $jq1("#txtJobDescription").val(data[0].Role);
+                    }
+                    PSNumber = data[0].PSNumber;
+                    $jq1("#txtHandledBy").attr("disabled", true);
+                    $jq1("#txtJobDescription").attr("disabled", true);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                },
+            });
+        }
+        function SaveProfleDetails() {
+            var jsonObj = [];
+            var customerData = {};
+            customerData["PhoneNumber"] = $jq1("#txtPhoneDirect").val();
+            customerData["EmailAddress"] = $jq1("#txtEmailAddress").val();
+            customerData["PSNumber"] = PSNumber;
+            jsonObj.push(customerData);
+
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=UPDATEUSERPROFILE',
+                cache: false,
+                async: false,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $jq1('#btnClose_Sub').trigger("click");
+                    toastr.success('Profile details saved successfully!', 'Success', { timeOut: 5000 });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $jq1('#btnClose').trigger("click");
+                    toastr.success('Profile details saved successfully!', 'Success', { timeOut: 5000 });
+                },
+            });
+        }
+        //$jq1(window).on('load', function () {
+        //    $jq1(".scrollbar-rail").scrollbar();
+        //});  
+        function LoadModuleAndAccess() {
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADMODULELIST',
+                cache: false,
+                async: false,
+                dataType: 'html',
+                success: function (data) {
+                    if (data == "Error") {
+
+                    }
+                    else {
+                        var jsonData = JSON.parse(data);
+                        var tbodyUserAccess = "";
+                        for (i in jsonData) {
+                            checkModuleRights(jsonData[i].Id, jsonData[i].ModuleName);
+                        }
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.error('Something went wrong please try again!', 'Error', { timeOut: 5000 });
+                    document.getElementById("loadingDiv").style.display = "none";
+                },
+            });
+        }
+
+        function checkModuleRights(ModuleId, ModuleName) {
+
+            var jsonObj = [];
+            var customerData = {};
+            customerData["Role"] = getCookie("Role");
+            customerData["ModuleId"] = ModuleId;
+            jsonObj.push(customerData);
+
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=CHECKMODULERIGHTS',
+                cache: false,
+                async: false,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'html',
+                success: function (data) {
+                    if (data == "Error") {
+
+                    }
+                    else {
+                        var jsonData = JSON.parse(data);
+                        //$jq1("#li" + ModuleName.replace(" ", "")).css("display", "block");
+                        if ($jq1(".username").text() == "Sulzer Admin") {
+                            $jq1("#li" + ModuleName.replace(" ", "")).css("display", "block");
+                        }
+                        else {
+
+                        }
+                        for (i in jsonData) {
+                            //if (ModuleName == "Tender Management" && jsonData[i].View == true) {
+                            //    if (ModuleName == "Tender Management" && jsonData[i].Insert == true) {
+                            //        $jq1("#liNewTender").css("display", "block");
+                            //    }
+                            //    $jq1("#li" + ModuleName.replace(" ", "")).css("display", "block");
+                            //    $jq1("#liTenderDetails").css("display", "block");
+                            //    $jq1("#liTenderDocuments").css("display", "block");
+                            //}
+                            //else 
+
+                            if (jsonData[i].View == true) {
+                                $jq1("#li" + ModuleName.replace(" ", "")).css("display", "block");
+                            }
+                        }
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    toastr.success('Profile details saved successfully!', 'Success', { timeOut: 5000 });
+                },
+            });
+        }
+
+        function getLegalEntityList() {
+            var jsonObj = [];
+            var customerData = {};
+
+            customerData["UserName"] = getCookie("UserName");
+            jsonObj.push(customerData);
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADLOCATIONADNROLE',
+                cache: false,
+                async: true,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'html',
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    var drpLocations = "<option value='Select'>----Select----</option>";
+                    if (jsonData.Table.length > 0) {
+                        for (i in jsonData.Table) {
+                            drpLocations += "<option value=" + jsonData.Table[i].Id + ">" + jsonData.Table[i].Location + "</option>";
+                        }
+                    }
+                    $jq1("#drpAssignedLegalEntityList").html(drpLocations);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error");
+                },
+            });
+        }
+        var ValidateLegalEntityValue;
+        function SwitchLocation() {
+            if ($jq1("#drpAssignedLegalEntityList").val() != "Select") {
+                ValidateLegalEntity();
+                if (ValidateLegalEntityValue == true) {
+                    document.cookie = "Location" + "=" + $jq1("#drpAssignedLegalEntityList option:selected").text();
+                    document.cookie = "LocationId" + "=" + $jq1("#drpAssignedLegalEntityList").val();
+                    window.location = "Dashboard.aspx";
+                }
+            }
+            else {
+                toastr.error('Please select legal entity assigned to you!', 'Error', { timeOut: 5000 });
+            }
+        }
+
+        function getAssignedUserRole() {
+            var jsonObj = [];
+            var customerData = {};
+
+            customerData["UserName"] = getCookie("UserName");
+            jsonObj.push(customerData);
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADLOCATIONADNROLE',
+                cache: false,
+                async: false,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'html',
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    var drpAssignedRole = "<option value='Select'>----Select----</option>";
+                    if (jsonData.Table1.length > 0) {
+                        for (i in jsonData.Table1) {
+                            //drpLocations += "<option value=" + jsonData.Table1[i].Id + ">" + jsonData.Table1[i].Location + "</option>";
+                            if (jsonData.Table1[i].Sales == true) {
+                                drpAssignedRole += "<option value=1>Sales Engineer</option>";
+                            }
+                            if (jsonData.Table1[i].TenderEngineer == true) {
+                                drpAssignedRole += "<option value=3>Tender Engineer</option>";
+                            }
+                            if (jsonData.Table1[i].TenderingManager == true) {
+                                drpAssignedRole += "<option value=2>Tendering Manager</option>";
+                            }
+                            if (jsonData.Table1[i].Admin == true) {
+                                drpAssignedRole += "<option value=4>Admin</option>";
+                            }
+                            if (jsonData.Table1[i].Viewer == true) {
+                                drpAssignedRole += "<option value=6>Viewer</option>";
+                            }
+
+                            //if (jsonData.Table1[i].SalesManager == true) {
+                            //    drpAssignedRole += "<option value=7>Sales Manager</option>";
+                            //}
+                            ///Change Done By akash Patni Due to role not Assigned
+                            if (jsonData.Table1[i].SalesManager == true) {
+                                drpAssignedRole += "<option value=5>Sales Manager</option>";
+                            }
+                        }
+                    }
+                    $jq1("#drpAssignedUserRole").html(drpAssignedRole);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error");
+                },
+            });
+        }
+
+        function SwitchUserRole() {
+            if ($jq1("#drpAssignedUserRole").val() != "Select") {
+                document.cookie = "Role" + "=" + $jq1("#drpAssignedUserRole option:selected").text();
+                document.cookie = "RoleId" + "=" + $jq1("#drpAssignedUserRole").val();
+                window.location = "Dashboard.aspx";
+            }
+            else {
+                toastr.error('Please select legal entity assigned to you!', 'Error', { timeOut: 5000 });
+            }
+        }
+
+        function getAssignedLegalEntity() {
+            var jsonObj = [];
+            var customerData = {};
+
+            customerData["CountryCode"] = getCookie("LocationId");
+            jsonObj.push(customerData);
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADSWITCHLEGALENTITY',
+                cache: false,
+                async: false,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'html',
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    var drpAssignedLegalEntity = "<option value='Select'>----Select----</option>";
+                    if (jsonData.length > 0) {
+                        for (i in jsonData) {
+                            drpAssignedLegalEntity += "<option value=" + jsonData[i].Id + ">" + jsonData[i].LegalEntityName + "</option>";
+                        }
+                    }
+                    $jq1("#drpLegalEntityList").html(drpAssignedLegalEntity);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error");
+                },
+            });
+        }
+
+        function SwitchLegalEntitye() {
+            if ($jq1("#drpLegalEntityList").val() != "Select") {
+                document.cookie = "LegalEntity" + "=" + $jq1("#drpLegalEntityList option:selected").text();
+                document.cookie = "LegalEntityId" + "=" + $jq1("#drpLegalEntityList").val();
+                window.location = "Dashboard.aspx";
+            }
+            else {
+                toastr.error('Please select legal entity assigned to you!', 'Error', { timeOut: 5000 });
+            }
+        }
+
+        function ValidateLegalEntity() {
+            var jsonObj = [];
+            var customerData = {};
+
+            customerData["Location"] = $jq1("#drpAssignedLegalEntityList").val();
+            jsonObj.push(customerData);
+            $jq1.ajax({
+                url: 'ServiceHandler.ashx?CBH=LOADLEGALENTITY',
+                cache: false,
+                async: false,
+                data: {
+                    data: JSON.stringify(jsonObj)
+                },
+                dataType: 'html',
+                success: function (data) {
+                    var jsonData = JSON.parse(data);
+                    if (jsonData.length == 0) {
+                        toastr.error('There is not legal entity assigned to this location.', 'Error', { timeOut: 5000 });
+                        ValidateLegalEntityValue = false;
+                    }
+                    else {
+                        ValidateLegalEntityValue = true;
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error");
+                },
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="assets/img/favicon-sulzer.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+    <title>Budget Price OHX Upgrade Kit</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/jquery-ui.css" rel="stylesheet" />
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet" />
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="assets/js/Common.js"></script>
+    <%--<script src="Scripts/jquery-1.9.1.min.js"></script>   --%>
+    <script src="Scripts/jquery-ui-1.10.4.min.js"></script>
+
+    <%--jqgrid--%>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body role="document">
+    <!-- Fixed navbar -->
+    <%-- <nav class="navbar navbar-default navbar-fixed-top header-navigation">
+        <div class="container primary-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed hidden" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" id="btnNavbarToggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">--%>
+    <%-- <img src="assets/brand/LT.png" /></a>--%>
+    <%--  <img src="assets/brand/sulzer.png" /></a>
+                <span class="navbar-brand text-primary">Budget Price OHX Upgrade Kit</span>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+            </div>
+
+            <!--/.nav-collapse -->
+        </div>
+    </nav>--%>
+
+    <header>
+        <div class="container">
+            <div class="logo-wrapper">
+                <a class="sulzer-logo" href="#">
+                    <img src="assets/brand/sulzer.png" alt="Sulzer" /><span class="highlight">Budget Price OHX Upgrade Kit</span></a>
+
+            </div>
+
+        </div>
+        <nav class="main-navigation">
+            <div class="container">
+                <div id="navbar"></div>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <%--<script src="assets/js/jquery.min.js"></script>--%>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="bootstrap/js/bootstrap-typeahead.js" type="text/javascript"></script>
+
+    <link href="assets/fixed-table-rows-cols-master/css/fixed_table_rc.css" rel="stylesheet" />
+    <script src="assets/fixed-table-rows-cols-master/js/fixed_table_rc.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <%--<div class="container theme-showcase" role="main" style="width:1570px">--%>
+    <div class="container theme-showcase primary-container" role="main">
+
+        <div class="alert alert-success hidden" role="alert" id="alert-success"></div>
+        <div class="alert alert-info hidden" role="alert" id="alert-info"></div>
+        <div class="alert alert-warning hidden" role="alert" id="alert-warning"></div>
+        <div class="alert alert-danger hidden" role="alert" id="alert-danger"></div>
+
+        <div class="modal fade" id="progressBar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="H1">Please wait...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="H2">About</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="assets/brand/sulzer.png" /></a>
+                        <h3>Pump Configurator</h3>
+                        <p>
+                            Version No – V001<br />
+                            All Rights Reserved.
+                            <br />
+                            This software and documentation is property of Sulzer Management Ltd.<br />
+                            Copyright @ Sulzer Management 2014.<br />
+                            Sulzer Management.<br />
+                            CH8401, Winterthur, Switzerland.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        <form id="form1" runat="server" autocomplete="off">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </form>
+    </div>
+
+
+
+    <script type='text/javascript'>
+        function ShowSuccess(msg) { ShowAlert('success', msg); }
+        function ShowInfo(msg) { ShowAlert('info', msg); }
+        function ShowWarning(msg) { ShowAlert('warning', msg); }
+        function ShowDanger(msg) { ShowAlert('danger', msg); }
+        function ShowAlert(type, msg) { $('#alert-' + type).removeClass('hidden').slideDown().html(msg).alert().fadeTo(3000, 500).slideUp(500, function () { }); }
+        function Required(element) { var elementParent = $(element).parent('.form-group'); if ($(element).val() == '') { elementParent.addClass('has-error'); return false; } else { elementParent.removeClass('has-error'); return true; } }
+
+        $(document).ajaxStart(function () {
+            $('#progressBar').modal('show');
+        });
+        $(document).ajaxStop(function () {
+            $('#progressBar').modal('hide');
+        });
+
+        function getCookiesMap(cookiesString) {
+            return cookiesString.split(";")
+                .map(function (cookieString) {
+                    return cookieString.trim().split("=");
+                })
+                .reduce(function (acc, curr) {
+                    acc[curr[0]] = curr[1];
+                    return acc;
+                }, {});
+        }
+
+        $(document).ready(function () {
+            $.ajaxSetup({
+                type: 'POST',
+            });
+
+            var pgurl = window.location.href.substr(window.location.href.lastIndexOf('/') + 1).trim();
+            pgurl = pgurl.split('?')[0];
+            if ((pgurl != 'LogIn.aspx') && (pgurl.length > 0)) {
+                $.ajax({
+                    url: 'ServiceHandler.ashx?CBH=GETNAVBAR',
+                    cache: false,
+                    async: true,
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#navbar').html(data);
+                        if (pgurl == 'Default.aspx') {
+                            document.getElementById('Unit').style.visibility = "visible";
+
+                        }
+                        else {
+                            document.getElementById('Unit').style.visibility = "hidden";
+                        }
+
+                        if (data != '') { $('#btnNavbarToggle').removeClass('hidden'); }
+                        else { $('#btnNavbarToggle').addClass('hidden'); }
+                        $('#navbar ul li a').each(function () { if ($(this).attr('href') == pgurl) { $(this).parent().addClass('active').addClass('UnderLine'); } })
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus + " " + errorThrown);
+                    },
+                });
+
+            }
+        });
+        function Logout() {
+            if (confirm('Are you sure you want to Logout ?') == true) {
+                $.ajax({
+                    url: 'ServiceHandler.ashx?CBH=LOGOUT',
+                    cache: false,
+                    async: true,
+                    success: function () {
+                        window.location = 'LogIn.aspx';
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus + " " + errorThrown);
+                    },
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>

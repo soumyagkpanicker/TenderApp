@@ -1,0 +1,749 @@
+﻿.tabs-content-wrapper {
+    width: 100%;
+}
+
+p.radio-group .radio {
+    margin-right: 10px;
+    display: inline-block;
+    margin-top: -3px;
+    margin-left: -2px;
+    font-size: 2rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+p.radio-group input[type='radio'] {
+    margin-right: 1px;
+    display: inline-block;
+    margin-top: 3px;
+    margin-left: 7px;
+    font-size: 2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+p.radio-group > span {
+    float: left;
+}
+
+    p.radio-group > span:last-child {
+        float: left;
+        margin-top: -1px;
+    }
+
+.radio span.radio {
+    display: inline-block;
+    position: absolute;
+    background: #091540;
+    padding: 6.6px;
+    background: #fff;
+    border-radius: 100%;
+    top: 0;
+    margin: 0;
+    border: 3px solid;
+    transition: 0.2s all ease;
+}
+
+span.radio {
+    position: relative;
+}
+
+input[type='radio'] {
+    padding: 12px;
+    display: inline-block;
+    z-index: 1;
+    width: 1.4em;
+    height: 1.4em;
+    top: -4px;
+    left: 0px;
+    opacity: 0;
+    transition: 0.3s all ease;
+    cursor: pointer;
+}
+
+.radio input[type='radio'] + span.radio:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    background: #204d74;
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+    left: 2px;
+    transition: 0.5s all ease;
+    opacity: 0;
+}
+
+.radio input[type='radio']:checked + span.radio:after {
+    opacity: 1;
+}
+
+ul.wizard li:not(.disabled) a {
+    color: rgb(6, 164, 189);
+}
+
+ul.wizard li:not(.disabled) .circle {
+    border: 2px solid #26408B;
+}
+
+ul.wizard li.active .text {
+    color: #26408B;
+}
+
+ul.wizard li * {
+    transition: 0.3s all ease;
+}
+
+.review-controls-wrapper .button-wrapper {
+    display: inline-block;
+    float: none;
+    width: auto;
+    margin-right: 15px;
+}
+
+.review-controls-wrapper {
+    float: right;
+    width: 100%;
+}
+
+ul.wizard {
+    list-style-type: none;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+h1.section-heading {
+    /* border-bottom: 1px solid #cfd7df; */
+    font-size: 2.4rem;
+    line-height: 1.2em;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    font-family: 'Roboto Condensed', sans-serif;
+    max-width: calc(100vw - 200px);
+    margin: 0 auto 15px 0;
+    /* background: #f5f5f5; */
+    padding: 5px 20px;
+    /* border: 1px solid #ddd; */
+    text-align: left;
+    font-weight: 700;
+}
+
+ul.wizard li {
+    padding: 0;
+    display: table-cell;
+    padding: 0 10px;
+}
+
+    ul.wizard li .circle {
+        border: 2px solid #dcdcdc;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        /* margin-left: 32px; */
+        clear: both;
+        /* float: left; */
+        padding-top: 17px;
+        font-size: 1.2rem;
+    }
+
+        ul.wizard li .circle + a {
+            display: inline-block;
+            clear: both;
+            color: #000;
+            text-align: center;
+            float: left;
+        }
+
+
+ul.wizard li {
+    text-align: center;
+    position: relative;
+}
+
+    ul.wizard li span:last-child {
+        text-align: center;
+        clear: both;
+        /* float: left; */
+        width: 100%;
+        float: left;
+        padding-top: 10px;
+        font-size: 1rem;
+        line-height: 1.2em;
+    }
+
+    ul.wizard li a {
+        color: #dcdcdc;
+        background: #fafafa;
+        position: relative;
+        z-index: 3;
+    }
+
+    ul.wizard li.active .circle {
+        border: 2px solid #5bc0de;
+        color: #5bc0de;
+    }
+
+    ul.wizard li.active a {
+        color: rgb(6, 164, 189);
+    }
+
+    ul.wizard li:after {
+        content: '';
+        width: 100%;
+        border-bottom: solid 1px #d5d5d5;
+        position: absolute;
+        top: 30px;
+        float: left;
+        left: calc(100% - 50px);
+    }
+
+    ul.wizard li:last-child:after {
+        opacity: 0;
+    }
+
+.dynamic-content-wrapper .tabs-wrapper > ul {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    background: #f5f5f5;
+    margin-top: 15px;
+    border-top: 1px solid #b9b9b9;
+    border-right: 1px solid #b9b9b9;
+    border-left: 1px solid #b9b9b9;
+}
+
+.dynamic-content-wrapper .tabs-wrapper li {
+    display: table-cell;
+    padding: 0 !important;
+    font-size: 0.9rem;
+    text-align: center;
+    border-right: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+    vertical-align: top;
+    height: 49px;
+}
+
+.tabs-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0%;
+}
+
+.dynamic-content-wrapper .tabs-wrapper li > a {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.3em;
+}
+
+.dynamic-content-wrapper .tabs-wrapper li a {
+    padding: 10px 10px;
+    display: table;
+    width: 100%;
+    transition: 0.3s background ease;
+    background: #ddd;
+    height: 100%;
+    /* vertical-align: middle; */
+    font-weight: 500;
+}
+
+.tabs-content-wrapper .form-group {
+    float: left;
+    width: 50%;
+    min-height: 35px;
+}
+
+.tabs-content-wrapper {
+    padding-top: 40px;
+    display: inline-block;
+    border-left: 1px solid #b9b9b9;
+    padding: 41px;
+    border-right: 1px solid #b9b9b9;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+    .tabs-content-wrapper label {
+        font-size: 0.9rem;
+        padding-right: 10px;
+        width: 40%;
+        font-weight: normal;
+    }
+
+.button-wrapper {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+    .button-wrapper a {
+        transition: 0.3s all ease;
+        -webkit-transition: 0.3s all ease;
+        display: inline-block;
+        font-size: 1rem;
+        color: #fff;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-decoration: none;
+        padding: 10px 26px 10px 26px;
+        position: relative;
+        background-color: #091540;
+        background: -webkit-gradient(linear, left top, left bottom, from(#091540), color-stop(50%, #091540), color-stop(50%, #091540), to(#3c4291));
+        background: -webkit-linear-gradient(top, #272e80 0%, #272e80 50%, #3c4291 50%, #3c4291 100%);
+        background: -webkit-gradient(linear, left top, left bottom, from(#091540), color-stop(50%, #091540), color-stop(50%, #000f48), to(#3c4291));
+    }
+
+input, button, select, textarea {
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    width: 55%;
+}
+
+.dynamic-content-wrapper .tabs-wrapper li.active a {
+    background: #fafafa;
+    color: #000;
+    width: 100%;
+    text-align: center;
+}
+
+span.text {
+    color: #000;
+}
+
+h2 {
+    font-family: 'Roboto Condensed';
+    font-size: 1.5rem;
+    background: #fafafa;
+    margin-left: 10px;
+    position: relative;
+    display: inline-block;
+    padding: 12px;
+    top: 23px;
+    margin-top: -26px;
+    /* margin-bottom: -36px; */
+}
+
+div#parameters {
+    padding-bottom: 40px;
+    padding-top: 45px;
+}
+
+.dynamic-content-wrapper {
+    border: 1px solid #333;
+    padding: 50px 30px;
+    display: inline-block;
+    width: 100%;
+}
+
+.loader {
+    position: absolute;
+    background: rgba(255,255,255,0.9);
+    text-align: center;
+    opacity: 1;
+    z-index: 10;
+    transition: 0.1s opacity ease;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+}
+
+    .loader.fadeAway {
+        opacity: 0;
+        z-index: -1;
+    }
+
+p.radio-group {
+    float: left;
+    width: 35%;
+}
+
+.fixed-information-for-tender .form-group:first-child label {
+    float: left;
+    width: 22%;
+}
+
+p.radio-group input {
+    margin-right: 7px;
+    width: auto;
+    margin-top: 1px;
+    float: left;
+}
+
+p.radio-group span {
+    font-size: 0.9rem;
+}
+
+.fixed-information-for-tender .form-group {
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.fixed-information-for-tender label {
+    margin-right: 10px;
+    width: 22%;
+}
+
+.fixed-information-for-tender {
+    margin-top: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+input.required {
+    border: 1px solid red;
+}
+
+.error-message-wrapper.active {
+    opacity: 1;
+}
+
+.error-message-wrapper {
+    position: absolute;
+    top: 83px;
+    right: 0;
+    z-index: 99999;
+    background: #BD362F;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 15px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 0 12px #000;
+    -webkit-box-shadow: 0 0 12px #000;
+    box-shadow: 0 0 12px #000;
+    opacity: 0;
+    transition: 0.3s all ease;
+}
+
+    .error-message-wrapper span.glyphicon.glyphicon-warning-sign {
+        font-size: 1.8rem;
+        float: left;
+        padding-right: 10px;
+        position: absolute;
+        left: 15px;
+        top: 18px;
+    }
+
+    .error-message-wrapper .title {
+        font-size: 1rem;
+        font-weight: 600;
+        display: block;
+        padding-left: 0px;
+        padding-bottom: 5px;
+    }
+
+    .error-message-wrapper p {
+        display: inline-block;
+        padding-left: 36px;
+    }
+
+li.review.disabled .circle {
+    border: 2px solid #dedddd;
+}
+
+.tabs-content-wrapper h2 {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    background: none;
+    padding: 0;
+    float: left;
+    width: 100%;
+    display: inline-block;
+    margin: 20px 0 33px 1px;
+    font-family: 'Open Sans';
+    letter-spacing: 0;
+}
+
+    .tabs-content-wrapper h2:first-child {
+        margin-top: 0;
+    }
+/*-------------- Pricing starts --------------*/
+.panel-wrapper {
+    border: 1px solid #e4e2e2;
+    margin: 30px 0;
+}
+
+.panel-outer-wrapper .panel-heading {
+    font-size: 0.9rem;
+    background: #e0e0e0;
+    font-weight: 700;
+}
+
+.panel-outer-wrapper .panel-content {
+    min-height: 100px;
+    padding: 15px;
+}
+
+.pricing-data-wrapper {
+    display: none;
+}
+
+.panel-outer-wrapper table td, .panel-outer-wrapper table th {
+    font-size: 0.9rem;
+}
+
+.panel-outer-wrapper table thead th {
+    background: #091540;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.panel-outer-wrapper table td {
+    background: #dedede;
+    border-right: 1px solid #fff;
+}
+
+.Pricing-controls-wrapper {
+    padding: 36px 10px 10px;
+}
+
+    .Pricing-controls-wrapper input {
+        max-width: 200px;
+        margin-left: 10px;
+    }
+
+.discountControlsWrapper .form-controls-wrapper label:first-child {
+    padding-right: 10px;
+}
+
+.discountControlsWrapper .form-controls-wrapper #txtDiscountPercentage {
+    max-width: 70px;
+}
+
+a#btnGetPrice {
+    margin-left: 12px;
+    margin-top: -7px;
+}
+
+label#lblAmount {
+    clear: left;
+    /* display: block; */
+    margin-top: 20px;
+    padding-left: 18px;
+}
+
+a#btnGenerateQuotation {
+    margin-top: 23px;
+    display: block;
+    width: 200px;
+}
+
+label[for='#txtSAPCustomerReference'] {
+    display: inline-block;
+    /* clear: left; */
+    padding-left: 40px;
+}
+
+input#chxBoxIncludeDiscount {
+    margin: 16px 0 0;
+    width: auto;
+}
+
+a#btnSaveQuotation {
+    display: block;
+    max-width: 200px;
+    margin-top: 55px;
+}
+
+input#chxBoxIncludeDiscount, .discountControlsWrapper label:last-child {
+    display: inline-block;
+    top: -85px;
+    position: relative;
+    padding-left: 10px
+}
+
+td.rmsp-val:first-child, th.rmsp:first-child {
+    display: none;
+}
+
+span#CurrencyCode {
+    font-size: 0.9rem;
+    padding-left: 6px;
+}
+
+label#lblCalculatedAmount {
+    padding-left: 5px;
+}
+
+span#ExchangeRate {
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.panel-outer-wrapper table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: inline-block;
+    overflow-y: hidden;
+}
+
+.Pricing-controls-wrapper > .form-controls {
+    float: left;
+    width: 50%;
+}
+
+.Pricing-controls-wrapper {
+    float: left;
+    width: 100%;
+    background: #fafafa;
+}
+
+    .Pricing-controls-wrapper .form-controls label {
+        float: left;
+        width: 35%;
+        margin-top: 6px;
+    }
+
+    .Pricing-controls-wrapper .form-controls input {
+        margin-bottom: 15px;
+    }
+
+    .Pricing-controls-wrapper > .form-controls .units {
+        padding-left: 10px;
+        font-size: 0.9rem;
+    }
+
+    .Pricing-controls-wrapper ~ .panel-wrapper {
+        display: inline-block;
+    }
+/*-------------- Pricing ends --------------*/
+
+/*------------ Tender CSS Starts ---------------*/
+.btn-PreviousFormData {
+    margin-right: 15px;
+}
+
+    .btn-PreviousFormData:after {
+        content: "";
+        border: solid #fff;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        position: absolute;
+        left: 14px;
+        top: 13px;
+    }
+
+.btn-NextFormData:after {
+    content: "";
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    position: absolute;
+    right: 15px;
+    top: 14px;
+}
+
+.button-wrapper a:hover {
+    /* background: #020135; */
+    background-position: 0 18px;
+}
+
+.btn-SaveSubFormData {
+    margin-right: 15px;
+}
+
+.dynamic-content-wrapper .tabs-wrapper li.active {
+    border-bottom: 0;
+}
+
+.fixed-information-for-tender .form-group {
+    margin-bottom: 30px;
+}
+
+.btn-NextFormData.disabled, .btn-PreviousFormData.disabled {
+    background: #d5d5d5;
+    cursor: default;
+}
+
+.dynamic-content-wrapper h3 {
+    font-size: 1rem;
+}
+
+input#totalCost {
+    max-width: 80px;
+    margin-left: 10px;
+}
+
+span.currencyCode {
+    font-size: 1.5em;
+    padding-left: 10px;
+}
+
+span.bold-text {
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.quantityWrapper {
+    position: absolute;
+    right: 25px;
+    top: 40px;
+}
+
+table.tblProduct > tbody > tr > td {
+    /* position: relative; */
+}
+
+input.inputProductQuantity {
+    margin-left: 10px;
+    max-width: 65px !important;
+}
+
+table.tblProduct tbody table th:first-child, table.tblProduct tbody table td:first-child {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+#drpSearchCustomer {
+    min-width: 55% !important;
+}
+
+.select2-container {
+    min-width: 55%;
+}
+
+.tabs-content-wrapper.topBorder {
+    border-top: 1px solid #b9b9b9;
+}
+
+#enduser.agent {
+    max-width: 40%;
+}
+.viewAgentInfobtn {
+    float: right;
+    padding: 3px 25px 5px 10px;
+    font-size: 1.3em;
+    text-align: center;
+}
+table.tblProduct select {
+    min-width: 100px;
+}
+
+.btn-primary.btnSavePricing {
+    margin-left: 15px;
+}
+
+.btnEditProduct, .btnDeleteProduct, .btnCopyProduct {
+    margin-right: 10px;
+}
+
+.btnCopyProduct {
+    margin-left: 10px;
+}
+/*------------ Tender CSS ENDs ---------------*/

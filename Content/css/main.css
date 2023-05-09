@@ -1,0 +1,549 @@
+﻿/*---------------- Start Reset CSS ----------------- */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+    font-size: 10px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    background: #fafafa;
+    height: 100vh;
+    overflow: hidden;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+:focus {
+    outline: 0;
+}
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.container-fluid {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+/*---------------- End Reset CSS ----------------- */
+.logo-wrapper {
+    display: none;
+    float: left;
+}
+
+    .logo-wrapper:not(.dashboard) {
+        display: block;
+    }
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 1px -2px 18px rgba(0,0,0,0.3);
+    z-index: 109999;
+}
+
+main {
+    /* margin-top: 70px; */
+    position: relative;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    background: #091540;
+    padding-top: 100px;
+    height: 100vh;
+    font-size: 1rem;
+    width: 300px;
+}
+
+    nav li {
+        padding: 12px;
+    }
+
+    nav *, nav *:hover, nav *:focus {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.mainNavigation {
+    background: #091540;
+    z-index: 9999;
+    position: relative;
+}
+
+nav li > ul {
+    padding-top: 20px;
+}
+
+.scrollbar-rail {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.content-wrapper {
+    padding: 100px 20px 30px 325px;
+    max-width: 1850px;
+    /*overflow-y: scroll;*/
+    overflow-x: hidden;
+}
+
+h1 {
+    /* font-family: 'Roboto Condensed';*/
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    /*letter-spacing: 2.8px;*/
+}
+
+.user-information {
+    padding: 15px 25px;
+    position: relative;
+}
+
+    .user-information p {
+        padding-bottom: 15px;
+    }
+
+    .user-information:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background: #fff;
+        width: 80%;
+        height: 1px;
+    }
+
+nav > ul {
+    margin-top: 20px;
+}
+
+p.role {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+p.location {
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.top-container .msg-panel h2 {
+}
+
+.top-container .msg-panel {
+    float: left;
+    width: 100%;
+    padding-right: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.top-container .tender-list-panel {
+    float: left;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+
+.bottom-container {
+    float: left;
+    width: 100%;
+    padding-top: 25px;
+}
+
+.top-container .msg-panel h2 {
+    font-size: 1rem;
+    background: #091540;
+    color: #fff;
+    padding: 7px 20px;
+}
+
+.recent-message-board {
+    padding: 10px 10px 10px 10px;
+    font-size: 0.9rem;
+    line-height: 1.4em;
+    border: 1px solid #efefef;
+    display: inline-block;
+    background: #fff;
+}
+
+    .recent-message-board > a {
+        float: right;
+        width: 100%;
+        text-align: right;
+        padding-bottom: 10px;
+        color: #000;
+        text-decoration: none;
+    }
+
+.top-container {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.messgae {
+    float: left;
+    width: 100%;
+    background: rgba(0, 137, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .messgae:last-child {
+        margin-bottom: 0;
+    }
+
+.top-container .tender-list-panel h2 {
+    background: #091540;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.recent-tenders {
+    background: #fff;
+    padding: 0px 10px 1 0px 10px !important;
+    font-size: 0.9rem;
+    line-height: 1.4em;
+    max-height: 200px;
+    border: 1px solid #efefef;
+}
+
+/*table tbody tr:nth-child(odd) td, table tbody tr:nth-child(odd) th {
+    background-color: rgba(244, 244, 244,0.5);
+}*/
+
+table th, table td {
+    padding: 11px 13px;
+}
+
+.recent-tenders > a {
+    text-decoration: none;
+    color: #000;
+    float: right;
+}
+
+.quick-links-wrapper > h2 {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 2.8px;
+    padding-bottom: 15px;
+    margin-bottom:20px !important;
+}
+
+.right-header-links {
+    float: right;
+}
+
+    .right-header-links ul li {
+        float: left;
+        font-size: 1rem;
+    }
+
+        .right-header-links ul li:first-child {
+            margin-right: 21px;
+        }
+
+        .right-header-links ul li a {
+            color: #000;
+        }
+
+    .right-header-links .btnLogout {
+        background: #ffa400;
+        padding: 6px 20px;
+        color: #fff;
+        text-decoration: none;
+    }
+
+.select2-selection__arrow {
+    height: 30px !important;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+}
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        background: #01009a;
+        color: #fff;
+        width: 30px !important;
+    }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border-color: #fff transparent !important;
+        }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        font-size: 0.9rem;
+    }
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0 !important;
+    border: 1px solid #ddd !important;
+}
+
+input, button, select, textarea, label {
+    font-size: 0.9rem;
+}
+
+.quick-links-wrapper ul {
+    display: table;
+    width: 100%;
+}
+
+    .quick-links-wrapper ul li {
+        display: table-cell;
+    }
+
+        .quick-links-wrapper ul li a {
+            font-size: 1rem;
+            color: #000;
+        }
+
+.quick-links-wrapper h2 {
+    margin-bottom: 55px;
+}
+
+span.select2-selection.select2-selection--single {
+    padding-right: 10px;
+    height: 32px;
+}
+
+.form-group input[type='file'] {
+    float: left;
+}
+
+.form-group label {
+    float: left;
+    font-weight: normal;
+}
+
+.validate {
+    border: 1px solid #BD362F !important;
+}
+
+select.validate {
+    border: 1px solid #BD362F;
+}
+
+.mainNavigation span.icon-nav {
+    padding-right: 10px;
+    float: left;
+}
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    /*font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;*/
+    border: 1px solid #ecf0f1;
+    background: #ecf0f1;
+    padding: 5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: #95a5a6;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+/*-------------- Dashboard starts ------------*/
+.TenderStatusWrapper {
+    float: left;
+    width: 30%;
+    padding-top: 36px;
+}
+
+.chart-wrapper {
+    float: left;
+    width: 100%;
+    background: transparent;
+    min-height: 370px;
+}
+
+.TenderStatusWrapper ul li > div {
+    background: #fff;
+    padding: 23px;
+    margin-bottom: 10px;
+}
+
+.TenderStatusWrapper ul li {
+    font-size: 1rem;
+}
+
+    .TenderStatusWrapper ul li p {
+        font-weight: 700;
+    }
+/*-------------- Dashboard ends ------------*/
+/**------------- Search starts -------------**/
+table#searchResultsTable thead th {
+    background: #091540;
+    color: #fff;
+}
+/**------------- Search ends -------------**/
+/**------------- UI Configurator Starts -------------*/
+.formWrapper {
+    padding: 25px 0;
+}
+
+.ddMainTabWrapper .control-wrap {
+    padding-bottom: 15px;
+}
+
+    .ddMainTabWrapper .control-wrap > label {
+        float: left;
+        width: 15%;
+        padding-right: 10px;
+        margin-top: 5px;
+    }
+
+#tblFormAttributes th, table#tblFormAttributes td {
+    font-size: 0.9rem;
+    border: 1px solid #000;
+}
+
+#tblFormAttributes th {
+    background: black;
+    color: #fff;
+}
+
+select {
+    padding: 5px 15px;
+}
+
+.myDragClass td {
+    background: #ddd;
+    border: 1px solid #f5f5f5 !important;
+}
+
+tr.myDragClass {
+    box-shadow: 1px 1px 4px #000;
+}
+
+.btn-wrapper.result {
+    margin-top: 30px;
+}
+
+.content-wrapper [disabled='disabled'] {
+    border: 1px solid #e8e8e8;
+    color: #000;
+    cursor: not-allowed !important;
+    background: #eee !important;
+}
+.tabs-content-wrapper.topBorder .content p {
+    font-size: 1.1rem;
+    text-align: center;
+}
+/**------------- UI Configurator Ends -------------*/
+/*-------------- COMMON CSS STARTS----------------*/
+#ContextMenu {
+    background: #fff;
+    padding: 10px;
+    font-size: 0.9rem;
+    box-shadow: 1px 1px 12px rgba(0,0,0,0.1);
+}
+
+    #ContextMenu li a {
+        color: #000;
+    }
+
+div#ContextMenu li {
+    padding: 9px;
+}
+/*-------------- COMMON CSS ENDS----------------*/
+.chart-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+svg.highcharts-root rect {
+    background: transparent !important;
+    fill: transparent !important;
+}
+.btn-SubmitFormData {
+    margin-left: 15px;
+}
+/*--------- PRICING CSS STARTS -----------*/
+table.tblProduct input.inputQuantity { max-width: 70px;}
+table.tblProduct input {max-width: 165px;padding: 3px 5px;}
+table.tblProduct th, table.tblProduct td {font-size: 0.9rem;}
+.scrollTable {
+    max-width: 100%;
+    overflow-x: scroll;position:relative;
+}
+table.tblProduct {
+    border: 1px solid #eee;
+}
+
+    table.tblProduct > tbody > tr > td {
+        padding: 20px;
+    }
+
+    table.tblProduct h3 {
+        background: #eee;
+        padding: 10px;
+    }
+.totalCost {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
